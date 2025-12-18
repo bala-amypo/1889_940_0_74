@@ -7,6 +7,8 @@ import com.example.demo.entity.Student;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
 
+import com.example.demo.exception.ResourceNotFoundException;
+
 @Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
@@ -15,4 +17,12 @@ public class StudentServiceImpl implements StudentService {
     public Student saveStudent(Student student){
         return studentRepository.save(student);
     }
+
+
+    public Student getStudentById(Long id){
+        return studentRepository.findById(id)
+        .orElseThrow(()-> new ResourceNotFoundException("Student not found"));
+    }
+
 }
+
