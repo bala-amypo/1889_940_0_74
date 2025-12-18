@@ -22,7 +22,7 @@ public class GlobalExceptionHandler{
         
         Map<String,String> errors=new HashMap<>();
 
-        ex.getBindingResult().getFieldErrors().forEach(error ->
+        mex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage())
         );
 
